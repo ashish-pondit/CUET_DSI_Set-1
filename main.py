@@ -158,15 +158,12 @@ class ProductManagement:
                 print('-'*50)
                 print('-'*50)
                 print()
-
-                # print('ID \t Product name \t\t Quantity \t\t Profit')
                 header = '|{:<5} {:<30} {:<8}  {:<10} |'.format(
                     'ID', 'Product name', 'Quantity', 'Profit')
                 print("_"*len(header))
                 print(header)
                 print('|{:<5} {:<30} {:<8}  {:<10} |'.format(
                     '..', '....................', '........', '..........'))
-                # print('.'*len(header))
 
                 for i, key in enumerate(keys):
                     print('|{:<5} {:<30} {:<8}  {:<10} |'.format(
@@ -195,30 +192,8 @@ class ProductManagement:
 
 
 def main():
-    prod1 = {'name': 'Egg',
-             'bPrice': 9.0,
-             'sPrice': 10.0,
-             'qty': 12,
-             'profit': 0.0
-             }
-    prod2 = {'name': 'Biscuits',
-             'bPrice': 10.0,
-             'sPrice': 15.0,
-             'qty': 20,
-             'profit': 0.0
-             }
-    prod3 = {'name': 'Cake',
-             'bPrice': 8.0,
-             'sPrice': 10.0,
-             'qty': 30,
-             'profit': 0.0
-             }
 
-    prod = {'Egg': prod1,
-            'Cake': prod2,
-            'Biscuits': prod3}
-
-    businessman = ProductManagement()  # (balance=500, product=prod)
+    businessman = ProductManagement()
 
     while(True):
         os.system('cls' if os.name == 'nt' else 'clear')
