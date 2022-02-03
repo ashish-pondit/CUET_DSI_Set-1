@@ -104,7 +104,7 @@ class ProductManagement:
                 popItem = self.product.pop(productId-1)
                 print(
                     f"'{popItem.name}' has been removed successfully from inventory")
-                # keys = list(self.product)
+
                 print('-'*50)
                 print('-'*50)
                 print('ID \t Product name')
@@ -123,10 +123,10 @@ class ProductManagement:
             inp = int(input(
                 '1.Buy a product\n2. Go To main menu\n(Enter the action number and press enter)\n'))
             if inp == 1:
-                # keys = list(self.product)
+
                 print('-'*50)
                 print('-'*50)
-                # print('ID \t Product name \t Buying Price')
+
                 if len(self.product) > 0:
                     print('{:<4} {:<30} {:<20}'.format(
                         "Id", "Product name", "Buying Price"))
@@ -137,7 +137,7 @@ class ProductManagement:
                     print(
                         'There is no product to buy.\nPlease add product first then come back')
                     continue
-                    # print(f'{i+1}\t   {prod.getName()} \t {prod.getbPrice()}')
+
                 print()
                 print('Please enter product id and quantity to buy.')
                 print('-'*50)
@@ -147,22 +147,20 @@ class ProductManagement:
                     print('Warning ! Product id out of range')
                     continue
                 qt = int(input('Please enter quantity: '))
-                # print(self.product[keys[productId-1]])
+
                 cost = qt * self.product[productId-1].getbPrice()
-                # print(cost, self.balance)
-                # print('*'*10)
+
                 if cost > self.balance:
                     print('Warning ! There is not enough to balance to buy ')
                 else:
                     self.balance = self.balance - cost
                     newQuantity = self.product[productId-1].getQuantity() + qt
                     self.product[productId-1].setQuantity(newQuantity)
-                    # self.product[keys[productId-1]
-                    #              ]['qty'] = self.product[keys[productId-1]]['qty'] + qt
+
                     print(
                         f'Total cost of {qt} {self.product[productId-1].getName()}s = {cost}')
                     print(
-                        f'{qt} {self.product[productId-1].getName()} {"s"*(qt>1)} bought successfully.')
+                        f'{qt} {self.product[productId-1].getName()}{"s"*(qt>1)} bought successfully.')
                     print('-'*50)
                     print('-'*50)
             else:
@@ -199,18 +197,16 @@ class ProductManagement:
                     print(
                         'There is not enough product in the\ninventory to meet the requirements')
                     continue
-                # profit = qt * \
-                #     (self.product[keys[productId-1]]['sPrice'] -
-                #      self.product[keys[productId-1]]['bPrice'])
+
                 totalProfit = (self.product[productId-1].calcGain() * qt)
                 self.product[productId-1].setProfit(
                     totalProfit + self.product[productId-1].getProfit())
-                # self.product[keys[productId-1]]['qty'] -= qt
+
                 newQuantity = self.product[productId-1].getQuantity() - qt
                 self.product[productId-1].setQuantity(newQuantity)
 
                 self.balance += qt * self.product[productId-1].getsPrice()
-                # pName = self.product[productId-1].getName()
+
                 print(
                     f'Total {qt} {self.product[productId-1].getName()}{"s"*(qt>1)} sold')
                 print(f'Total profit earned {totalProfit}tk')
@@ -224,7 +220,7 @@ class ProductManagement:
             inp = int(input(
                 '1.Product list\n2.Go To main menu\n(Enter the action number and press enter.)\n'))
             if inp == 1:
-                # keys = list(self.product)
+
                 print('-'*50)
                 print('-'*50)
                 print()
@@ -273,7 +269,7 @@ def main():
     businessman = ProductManagement()
 
     while(True):
-        # os.system('cls' if os.name == 'nt' else 'clear')
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('-'*50)
         print('-'*50)
         print()
