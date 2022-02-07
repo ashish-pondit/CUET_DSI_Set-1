@@ -1,5 +1,5 @@
 import os
-
+import pickle
 
 class Item:
     def __init__(self, name, bPrice, sPrice, quantity, profit=0.0):
@@ -39,6 +39,7 @@ class ProductManagement:
         self.balance = balance
         self.product = product
 
+    
     def addProduct(self):
         print('-'*50)
         print('-'*50)
@@ -160,7 +161,7 @@ class ProductManagement:
                     print(
                         f'Total cost of {qt} {self.product[productId-1].getName()}s = {cost}')
                     print(
-                        f'{qt} {self.product[productId-1].getName()}{"s"*(qt>1)} bought successfully.')
+                        f'{qt} {self.product[productId-1].getName()}(s) bought successfully.')
                     print('-'*50)
                     print('-'*50)
             else:
@@ -208,7 +209,7 @@ class ProductManagement:
                 self.balance += qt * self.product[productId-1].getsPrice()
 
                 print(
-                    f'Total {qt} {self.product[productId-1].getName()}{"s"*(qt>1)} sold')
+                    f'Total {qt} {self.product[productId-1].getName()}(s) sold')
                 print(f'Total profit earned {totalProfit}tk')
                 print('-'*50)
                 print('-'*50)
@@ -263,13 +264,23 @@ class ProductManagement:
             else:
                 break
 
+def updatePickle(object):
+    with open('data.pickle', 'wb') as file:
+        pickle.dump(object, file)
 
 def main():
 
-    businessman = ProductManagement()
+    # businessman = ProductManagement()
 
+    # with open('data.pickle', 'rb') as file:
+    #     pickle.dump(businessman, file)
+    with open('data.pickle', 'rb') as file:
+        businessman = pickle.load(file)
+    # print(businessman.balance)
     while(True):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
+
+        clearConsole()
         print('-'*50)
         print('-'*50)
         print()
@@ -287,7 +298,9 @@ def main():
         elif option == 6:
             businessman.showBalance()
         else:
+            updatePickle(businessman)
             break
+        updatePickle(businessman)
         print('-'*50)
         print('-'*50)
 
